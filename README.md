@@ -118,6 +118,20 @@ If you found this useful, drop a star! It keeps the motivation high to add more 
 
 ---
 
+## ☕ Support & Donations
+
+If `micro-agents` helped you learn, saved you engineering hours, or inspired your architecture, consider supporting open-source development:
+
+| Network | Asset | Address |
+| :--- | :--- | :--- |
+| **Bitcoin** | `BTC` | `bc1q62yn8mm5rty7x9fvq92p420eysxsyysk6klt7y` |
+| **Ethereum** | `ETH` / `ERC-20` | `0x83B7ea465C7b9CE1BaCf2c8ad538Cc6b55aa1a2c` |
+| **BNB Smart Chain** | `BNB` / `BEP-20` | `0x83B7ea465C7b9CE1BaCf2c8ad538Cc6b55aa1a2c` |
+
+Thank you for supporting independent open-source software! 🚀
+
+---
+
 ## 📄 License
 
 MIT License — Feel free to use in personal, educational, or commercial projects without restriction.
