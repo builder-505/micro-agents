@@ -1,0 +1,4 @@
+# Micro-Agents uses Python's standard library (urllib, json, re, subprocess, os, sys)
+# No external dependencies required!
+# Optional provider SDK if you want to use the official clients instead of urllib:
+# openai>=1.30.0
