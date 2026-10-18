@@ -38,22 +38,108 @@ This repository contains **minimal, crystal-clear, production-tested patterns** 
 
 ---
 
-## 🚀 Quickstart
+---
 
-Clone the repository and run any recipe with zero complex setup:
+## 🛠️ Installation & Step-by-Step Usage Guide
+
+### Prerequisites
+- Python 3.10 or higher (`python --version`)
+- Standard terminal (PowerShell, Bash, or Zsh)
+- *(Optional)* An API key from OpenAI, DeepSeek, Groq, or a locally running Ollama instance.
+
+---
+
+### Step 1: Clone the Repository
+Clone `micro-agents` to your local machine:
 
 ```bash
 git clone https://github.com/builder-505/micro-agents.git
 cd micro-agents
-
-# Optional: set your API key (works with OpenAI, DeepSeek, Groq, Ollama, or any compatible endpoint)
-export OPENAI_API_KEY="your-api-key"
-
-# Run any agent recipe directly:
-python recipes/01_single_loop_tool_caller.py
 ```
 
-*Note: All recipes include an offline/mock mode by default so anyone can test and run them instantly even without an API key!*
+---
+
+### Step 2: (Optional) Create a Virtual Environment
+Keep your environment clean using Python's built-in `venv`:
+
+```bash
+# On Linux / macOS:
+python3 -m venv .venv
+source .venv/bin/activate
+
+# On Windows (PowerShell):
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+*(No external pip dependencies are required — the entire project runs on Python standard library!)*
+
+---
+
+### Step 3: Run Instantly in Offline Simulation Mode (No API Key Required!)
+You can immediately test any agent architecture out-of-the-box. Every recipe includes simulated responses so you can observe the internal reasoning loop:
+
+```bash
+# 1. Run the Tool Caller:
+python recipes/01_single_loop_tool_caller.py
+
+# 2. Run the ReAct Reasoning Agent:
+python recipes/02_react_agent.py
+
+# 3. Run the Plan-and-Execute Agent:
+python recipes/03_plan_and_execute.py
+
+# 4. Run the Code Auto-Healing Agent:
+python recipes/04_self_reflection_agent.py
+
+# 5. Run the Multi-Agent Team:
+python recipes/05_multi_agent_team.py
+```
+
+---
+
+### Step 4: Connecting a Real LLM Provider
+To switch from offline simulation to live LLM execution, simply set your environment variable:
+
+#### Option A: OpenAI
+```bash
+# Linux / macOS
+export OPENAI_API_KEY="sk-..."
+
+# Windows PowerShell
+$env:OPENAI_API_KEY="sk-..."
+```
+
+#### Option B: DeepSeek / Groq / Local Ollama (Zero Cost)
+All recipes use standard OpenAI-compatible completions. To point to Ollama or DeepSeek:
+
+```bash
+# Example with Local Ollama:
+export OPENAI_BASE_URL="http://localhost:11434/v1"
+export OPENAI_API_KEY="ollama"
+
+# Example with DeepSeek:
+export OPENAI_BASE_URL="https://api.deepseek.com/v1"
+export OPENAI_API_KEY="your-deepseek-key"
+```
+
+---
+
+### Step 5: How to Use in Your Own Project
+
+Because `micro-agents` recipes are single-file architectures with zero external framework wrappers, you can drop them straight into your own codebase:
+
+1. **Copy the recipe file** you need into your project (e.g., `cp recipes/01_single_loop_tool_caller.py ./my_agent.py`).
+2. **Add your own custom tools** as standard Python functions:
+```python
+def check_order_status(order_id: str) -> str:
+    # Your database query here
+    return json.dumps({"order_id": order_id, "status": "Shipped"})
+
+# Register in the tool dictionary:
+AVAILABLE_TOOLS["check_order_status"] = check_order_status
+```
+3. Run `run_agent_loop("Where is order #9921?")` — that's it!
 
 ---
 
